@@ -1,6 +1,5 @@
 !---------------------------------------------------------
-"Name"          = 'PythonLikeLang'
-"Author"        = 'AI Assistant'
+"Author"        = 'Alaa Amer'
 "Start Symbol"  = <program>
 !---------------------------------------------------------Terminals
 identifier = {letter}{Alphanumeric}*
