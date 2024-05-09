@@ -1,0 +1,65 @@
+!---------------------------------------------------------
+"Name"          = 'PythonLikeLang'
+"Author"        = 'AI Assistant'
+"Start Symbol"  = <program>
+!---------------------------------------------------------Terminals
+identifier = {letter}{Alphanumeric}*
+int = {Digit}+
+float = {Digit}+ '.' {Digit}+
+string = '"' {Printable}+ '"'
+
+boolean = 'True' | 'False'
+
+!---------------------------------------------------------Non-Terminals
+<program> ::= Begin <statement_list> End
+
+<statement_list> ::= <statement> <statement_list>
+                   | <statement>
+
+<statement> ::= <assignment>
+              | <if_statement>
+              | <while_loop>
+              | <for_loop>
+              | <switch_statement>
+              | <do_while_loop>
+
+<assignment> ::= identifier '=' <expression>
+
+<if_statement> ::= 'if' <expression> ':' <statement_list> <else_clause>
+
+<else_clause> ::= 'else' ':' <statement_list>
+                | 
+
+<while_loop> ::= 'while' <expression> ':' <statement_list>
+
+<do_while_loop> ::= 'do' ':' <statement_list> 'while' <expression>
+
+<for_loop> ::= 'for' identifier 'in' 'range(' <expression> ')' ':' <statement_list>
+
+<switch_statement> ::= 'switch' identifier '{' <case_statements> '}'
+
+<case_statements> ::= 'case' <value> ':' <statement_list> <case_statements>
+                    | 'default' ':' <statement_list>
+
+<expression> ::= <arithmetic_expression>
+               | <logical_expression>
+               | <value>
+
+<arithmetic_expression> ::= <value> '+' <value>
+                          | <value> '-' <value>
+                          | <value> '*' <value>
+                          | <value> '/' <value>
+
+<logical_expression> ::= <value> '==' <value>
+                       | <value> '!=' <value>
+                       | <value> '<' <value>
+                       | <value> '>' <value>
+                       | <value> '<=' <value>
+                       | <value> '>=' <value>
+
+<value> ::= identifier
+          | int
+          | float
+          | string
+          | boolean
+
